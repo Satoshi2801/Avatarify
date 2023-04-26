@@ -221,7 +221,7 @@ if __name__ == "__main__":
 
     cam_id = select_camera(config)
 
-    if cam_id is None
+    if cam_id is None:
         exit(1)
 
     cap = VideoCaptureAsync(cam_id)
