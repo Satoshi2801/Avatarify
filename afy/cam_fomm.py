@@ -221,7 +221,7 @@ if __name__ == "__main__":
 
     cam_id = select_camera(config)
 
-    if cam_id is None:
+    if cam_id is None
         exit(1)
 
     cap = VideoCaptureAsync(cam_id)
@@ -242,7 +242,7 @@ if __name__ == "__main__":
                 log("pyfakewebcam is not installed.")
                 exit(1)
 
-            stream = pyfakewebcam.FakeWebcam(f'/dev/video{opt.virt_cam}', *stream_img_size)
+            stream = pyfakewebcam.FakeWebcam('/dev/video{}'.format(opt.virt_cam), *stream_img_size)
         else:
             enable_vcam = False
             # log("Virtual camera is supported only on Linux.")
