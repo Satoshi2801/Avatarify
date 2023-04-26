@@ -133,7 +133,7 @@ class PredictorRemote:
         sender = ctx.socket(zmq.PUSH)
         sender.connect(address)
 
-        log(f"Sending to {address}")
+        log("Sending to {}".format(address))
 
         try:
             while worker_alive.value:
@@ -170,7 +170,7 @@ class PredictorRemote:
         receiver.connect(address)
         receiver.RCVTIMEO = RECV_TIMEOUT
 
-        log(f"Receiving from {address}")
+        log("Receiving from {}".format(address))
 
         try:
             while worker_alive.value:

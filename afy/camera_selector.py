@@ -12,17 +12,17 @@ def query_cameras(n_cams):
     cam_frames = {}
     cap = None
     for camid in range(n_cams):
-        log(f"Trying camera with id {camid}")
+        log("Trying camera with id {}".format(camid))
         cap = cv2.VideoCapture(camid)
 
         if not cap.isOpened():
-            log(f"Camera with id {camid} is not available")
+            log("Camera with id {} is not available".format(camid))
             continue
 
         ret, frame = cap.read()
 
         if not ret or frame is None:
-            log(f"Could not read from camera with id {camid}")
+            log("Could not read from camera with id {}".format(camid))
             cap.release()
             continue
 
@@ -105,7 +105,7 @@ if __name__ == '__main__':
 
     if cam_frames:
         selected_cam = select_camera(cam_frames)
-        print(f"Selected camera {selected_cam}")
+        print("Selected camera {}".format(selected_cam))
     else:
         log("No cameras are available")
 

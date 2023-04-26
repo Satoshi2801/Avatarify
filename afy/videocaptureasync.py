@@ -41,7 +41,7 @@ class VideoCaptureAsync:
         while not self.grabbed:
             warmup_elapsed_time = (time.time() - warmup_start_time)
             if warmup_elapsed_time > WARMUP_TIMEOUT:
-                raise RuntimeError(f"Failed to succesfully grab frame from the camera (timeout={WARMUP_TIMEOUT}s). Try to restart.")
+                raise RuntimeError("Failed to succesfully grab frame from the camera (timeout={}s). Try to restart.".format(WARMUP_TIMEOUT))
 
             time.sleep(0.5)
 

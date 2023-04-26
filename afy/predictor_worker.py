@@ -62,7 +62,7 @@ class PredictorWorker():
 
         ctx = SerializingContext()
         socket = ctx.socket(zmq.PULL)
-        socket.bind(f"tcp://*:{port}")
+        socket.bind("tcp://*:{}".format(port))
         socket.RCVTIMEO = RECV_TIMEOUT
 
         log(f'Receiving on port {port}', important=True)
@@ -116,7 +116,7 @@ class PredictorWorker():
                 # get the latest non-critical request from the queue
                 # don't skip critical request
                 while not recv_queue.empty() and not method['critical']:
-                    log(f"skip {method}")
+                    log("skip {}".format(method))
                     method, data = recv_queue.get()
 
                 log("working on", method)
@@ -187,9 +187,9 @@ class PredictorWorker():
 
         ctx = SerializingContext()
         socket = ctx.socket(zmq.PUSH)
-        socket.bind(f"tcp://*:{port}")
+        socket.bind("tcp://*:{}".format(port))
 
-        log(f'Sending on port {port}', important=True)
+        log('Sending on port {}'.format(port), important=True)
 
         try:
             while worker_alive.value:
@@ -204,7 +204,7 @@ class PredictorWorker():
                 # get the latest non-critical request from the queue
                 # don't skip critical request
                 while not send_queue.empty() and not method['critical']:
-                    log(f"skip {method}")
+                    log("skip {}".format(method))
                     method, data = send_queue.get()
 
                 log("sending", method)

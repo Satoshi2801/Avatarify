@@ -79,7 +79,7 @@ class TicToc:
 
     def tocp(self, str):
         t = self.toc()
-        log(f"{str} took {t:.4f}ms")
+        log("{} took {t:.4f}ms".format(str))
         return t
 
 

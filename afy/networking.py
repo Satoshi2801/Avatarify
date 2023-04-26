@@ -21,7 +21,7 @@ def check_connection(socket, timeout=1000):
     finally:
         socket.RCVTIMEO = old_rcvtimeo
 
-    log(f"Response to hello is {response}")
+    log("Response to hello is {}".format(response))
   
     return response == 'OK'
 
